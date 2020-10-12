@@ -1,0 +1,23 @@
+{
+  "name": "cachestorageandindexeddb",
+  "version": "1.0.0",
+  "description": "one way to cahce content by cacheStorage And IndexedDB",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npx http-server ./src -p 7777",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/caoweiju/cacheStorageAndIndexedDB.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/caoweiju/cacheStorageAndIndexedDB/issues"
+  },
+  "homepage": "https://github.com/caoweiju/cacheStorageAndIndexedDB#readme",
+  "dependencies": {
+    "http-server": "^0.12.3"
+  }
+}
