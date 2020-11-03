@@ -1,6 +1,6 @@
 self.addEventListener('install', function(event) {
   event.waitUntil(
-    caches.open('v1').then(function(cache) {
+    caches.open('v2').then(function(cache) {
       return cache.addAll([
         '/cache/',
         '/cache/cache.html',
@@ -10,6 +10,7 @@ self.addEventListener('install', function(event) {
         '/cache/imgs/daishu.jpeg',
         '/cache/imgs/daishu.gif',
         '/cache/imgs/logo.png',
+        '/cache/imgs/logo-prefetch-new.png',
       ]);
     })
   );
