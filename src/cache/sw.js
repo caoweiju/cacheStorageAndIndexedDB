@@ -1,16 +1,16 @@
 self.addEventListener('install', function(event) {
   event.waitUntil(
-    caches.open('v2').then(function(cache) {
+    caches.open('v1').then(function(cache) {
       return cache.addAll([
-        '/cache/',
-        '/cache/cache.html',
+        // '/cache/',
+        // '/cache/cache.html',
         '/cache/style.css',
         '/cache/cache.js',
-        '/cache/image-list.js',
-        '/cache/imgs/daishu.jpeg',
-        '/cache/imgs/daishu.gif',
-        '/cache/imgs/logo.png',
-        '/cache/imgs/logo-prefetch-new.png',
+        // '/cache/image-list.js',
+        // '/cache/imgs/daishu.jpeg',
+        // '/cache/imgs/daishu.gif',
+        // '/cache/imgs/logo.png',
+        // '/cache/imgs/logo-prefetch-new.png',
       ]);
     })
   );
@@ -27,11 +27,14 @@ self.addEventListener('fetch', function(event) {
         // response may be used only once
         // we need to save clone to put one copy in cache
         // and serve second one
-        let responseClone = response.clone();
-        
-        caches.open('v1').then(function (cache) {
-          cache.put(event.request, responseClone);
-        });
+        if (event.request && event.request.url && /\/cache\/imgs\//.test(event.request.url)) {
+          // only cache resource that we want
+          let responseClone = response.clone();
+          
+          caches.open('v1').then(function (cache) {
+            cache.put(event.request, responseClone);
+          });
+        }
         return response;
       }).catch(function () {
         return caches.match('/cache/imgs/daishu.gif');
