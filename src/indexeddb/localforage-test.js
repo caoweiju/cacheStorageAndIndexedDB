@@ -37,9 +37,15 @@ localstorageSetTest.end();
 
 var indexeddbSetTest = new test('indexeddbSetTest');
 indexeddbSetTest.start();
-localforage.setItem('indexeddbSetTest', {a:1,b:2}).then(() => {
-    indexeddbSetTest.end();
-})
+let count = 0;
+for (let index = 0; index < 100; index++) {
+    localforage.setItem(`indexeddbSetTest${index%5}`, {index, a:1,b:2,}).then(() => {
+        count += 1;
+        if (count === 100) {
+            indexeddbSetTest.end();
+        }
+    })
+}
 
 // var indexeddbGetTest = new test('indexeddbSetTest');
 // indexeddbGetTest.start();
